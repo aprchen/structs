@@ -242,7 +242,6 @@ func (s *Struct) TagFieldNames(tag string) []string {
 		if tagName != "" {
 			name = tagName
 		}
-		fmt.Println(name)
 		if tagOpts.Has(tag) {
 			res = append(res, name)
 		}
