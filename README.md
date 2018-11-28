@@ -1,10 +1,10 @@
 # Fork from [structs](https://github.com/fatih/structs)
 new method:
 
-```
+```go
  var test struct {
-		A    string `json:"a,omitempty"`		
-		Test int    `json:"test,omitempty,required"`
+	A    string `json:"a,omitempty"`		
+	Test int    `json:"test,omitempty,required"`
 	}
  s := structs.New(test)
  s.TagName = "json"
