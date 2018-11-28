@@ -3,7 +3,6 @@ package structs
 
 import (
 	"fmt"
-
 	"reflect"
 )
 
@@ -221,6 +220,34 @@ func (s *Struct) Values() []interface{} {
 // It panics if s's kind is not struct.
 func (s *Struct) Fields() []*Field {
 	return getFields(s.value, s.TagName)
+}
+
+//e.g
+// var test struct {
+//		A    string `json:"a,omitempty"`
+//		Test int    `json:"test,omitempty,required"`
+//	}
+// s := structs.New(test)
+// s.TagName = "json"
+// res:= s.TagFieldNames("required")
+// res is [test]
+//
+func (s *Struct) TagFieldNames(tag string) []string {
+	var res []string
+	fields := s.structFields()
+	for _, field := range fields {
+		name := field.Name
+
+		tagName, tagOpts := parseTag(field.Tag.Get(s.TagName))
+		if tagName != "" {
+			name = tagName
+		}
+		fmt.Println(name)
+		if tagOpts.Has(tag) {
+			res = append(res, name)
+		}
+	}
+	return res
 }
 
 // Names returns a slice of field names. A struct tag with the content of "-"
