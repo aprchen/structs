@@ -11,7 +11,7 @@ functions or improve the existing code.
 ## Install
 
 ```bash
-go get github.com/fatih/structs
+go get github.com/aprchen/structs
 ```
 
 ## Usage and Examples
