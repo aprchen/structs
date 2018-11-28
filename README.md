@@ -1,5 +1,16 @@
 # Fork from [structs](https://github.com/fatih/structs)
-源项目已不再维护
+new method:
+
+```
+ var test struct {
+		A    string `json:"a,omitempty"`		
+		Test int    `json:"test,omitempty,required"`
+	}
+ s := structs.New(test)
+ s.TagName = "json"
+ res:= s.TagFieldNames("required") //[test]
+ 
+```
 
 # Structs [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/fatih/structs) [![Build Status](http://img.shields.io/travis/fatih/structs.svg?style=flat-square)](https://travis-ci.org/fatih/structs) [![Coverage Status](http://img.shields.io/coveralls/fatih/structs.svg?style=flat-square)](https://coveralls.io/r/fatih/structs)
 
